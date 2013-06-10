@@ -33,6 +33,8 @@ public class YeomanMojo extends AbstractMojo {
     File yeomanProjectDirectory;
     @Parameter( defaultValue = "${os.name}", readonly = true)
     String osName;
+    @Parameter ( defaultValue = "--no-color" )
+    String gruntArgs;
 
     public void execute() throws MojoExecutionException {
         npmInstall();
@@ -47,7 +49,7 @@ public class YeomanMojo extends AbstractMojo {
         executeCommand("bower install --no-color");
     }
     private void grunt() throws MojoExecutionException {
-        executeCommand("grunt --no-color");
+        executeCommand("grunt " + gruntArgs);
     }
 
 
